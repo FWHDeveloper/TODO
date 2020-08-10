@@ -1,0 +1,9 @@
+package com.example.todo.dao;
+
+public interface TaskDao {
+
+	    public List<Task>findAll();
+	    public ProductfindById(int id);
+	    public Productsave(Product product);
+	
+}

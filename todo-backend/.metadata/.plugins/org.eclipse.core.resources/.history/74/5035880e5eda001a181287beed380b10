@@ -1,0 +1,63 @@
+package com.example.todo.controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.todo.models.Task;
+
+@RequestMapping("/api")
+@CrossOrigin("*")
+@RestController
+public class TodoController {
+
+	// Get the list of the tasks
+	@RequestMapping(method = RequestMethod.GET, value="/tasks")
+	@GetMapping("/tasks")
+	public List<Task> all_tasks() {
+		return TaskService.getAllTaskList();
+	}
+
+	// Get a task by id
+	@RequestMapping(method = RequestMethod.GET, value="/Tasks/{id}")
+	@GetMapping("/Tasks/{id}")
+	/*
+	 * Dans ce code,  c'est l'annotation @@GetMapping  qui permet de faire le lien 
+	 * entre l'URI "/Produits", invoquée via GET, et la méthode listeProduits .
+	 * */
+	public Task getTask(@PathVariable("id") int id) {
+		return TaskService.getTask(id);
+	}
+
+	// Add a task
+
+	@RequestMapping(method = RequestMethod.POST, value = "/tasks")
+	@PostMapping("/tasks")
+	public void addTask(@RequestBody Task task) {
+		TaskService.addTask(task);
+	}
+
+	// Update a task
+	@RequestMapping(method = RequestMethod.PUT, value = "/tasks/{id}")
+	@PutMapping("/tasks/{id}")
+
+	public void updateTask(@RequestBody Task task, @PathVariable("id") int id) {
+		TaskService.updateTask(task, id);
+	}
+
+	// Delete a task
+	@RequestMapping(method = RequestMethod.DELETE, value = "/tasks/{id}")
+	@DeleteMapping("/tasks/{id}")
+	public void deleteTask(@PathVariable("id") int id) {
+		TaskService.delete(id);
+	}
+}

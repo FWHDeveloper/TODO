@@ -1,0 +1,47 @@
+package com.example.todo.controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.todo.models.Task;
+
+@RestController
+public class TodoController {
+
+	// Get the list of the tasks
+	@RequestMapping(method = RequestMethod.GET, value="/tasks")
+	public List<Task> all_tasks() {
+		return TaskService.getAllTaskList();
+	}
+
+	// Get a task by id
+	@RequestMapping("/Tasks/{id}")
+	public Task getTask(@PathVariable("id") int id) {
+		return TaskService.getTask(id);
+	}
+
+	// Add a task
+
+	@RequestMapping(method = RequestMethod.POST, value = "/tasks")
+	public void addTask(@RequestBody Task task) {
+		TaskService.addTask(task);
+	}
+
+	// Update a task
+	@RequestMapping(method = RequestMethod.PUT, value = "/tasks/{id}")
+
+	public void updateTask(@RequestBody Task task, @PathVariable("id") int id) {
+		TaskService.updateTask(task, id);
+	}
+
+	// Delete a task
+	@RequestMapping(method = RequestMethod.DELETE, value = "/tasks/{id}")
+	public void deleteTask(@PathVariable("id") int id) {
+		TaskService.delete(id);
+	}
+}

@@ -1,0 +1,11 @@
+package com.example.todo.dao;
+
+import java.util.List;
+
+public interface TaskDao {
+
+	    public List<Task>findAll();
+	    public TaskfindById(int id);
+	    public Productsave(Product product);
+	
+}

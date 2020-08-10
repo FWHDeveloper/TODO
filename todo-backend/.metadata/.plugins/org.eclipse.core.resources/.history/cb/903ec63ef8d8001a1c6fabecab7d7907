@@ -1,0 +1,29 @@
+package com.example.todo.dao;
+import java.util.List;
+
+import com.example.todo.models.Task;
+
+public class TaskDaoImpl implements TaskDao {
+	
+	
+
+
+		@Override
+		public List<Task> findAll() {
+			
+			return null;
+		}
+
+		@Override
+		public void TaskfindById(int id) {
+			
+		}
+
+		@Override
+		public void Tasksave(Task task) {
+			
+			
+		}
+	}
+
+

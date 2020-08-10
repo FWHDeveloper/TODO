@@ -1,0 +1,25 @@
+package com.example.todo.controller;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.example.todo.models.Task;
+
+@Service
+
+public class TaskService {
+	
+
+
+	    private List<Task> topicList = new ArrayList<>(Arrays.asList(
+
+	            new Task( 1,"_Spring FrameWork"),
+	            new Task( 2,"Spring FrameWork"),
+	            new Task( 3, "Java FrameWork")
+
+	    ));
+
+}

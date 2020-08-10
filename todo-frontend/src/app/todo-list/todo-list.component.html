@@ -1,0 +1,28 @@
+
+<form #myform="ngForm" (ngSubmit)="createTodo(myform)">
+<div class="form-group">
+  <label for ="todoId"> Todo id </label>
+<input ngModel name="todoId" size="20" type="number" class="form-control" id ="todoId">
+<label for ="todoDescription"> Todo description </label>
+<input ngModel name="todoDescription" size="20" type="text" class="form-control" id ="todoDescription">
+</div>
+
+<button class =" btn btn-primary">Add</button>
+
+</form>
+<br>
+<br>
+
+<div class="container">
+<ul class="list-group">
+<li *ngFor="let todo of todos" class="list-group"> 
+  *Tâche : {{todo.id}} ---- {{todo.description}}
+  <button class="btn btn-link" (click)="updateTodo(todo)">Update</button>
+  <button class="btn btn-link" (click)="deleteTodo(todo)">Delete</button>
+  <button [routerLink]="['/todoitem']"class="btn btn-link">Détails</button>
+</li>
+</ul>
+</div>
+<div class="no-todos" *ngIf="todos && todos.length == 0">
+  <p>Pas de tâches disponibles !!!</p>
+</div>
